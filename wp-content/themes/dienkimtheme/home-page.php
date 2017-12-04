@@ -22,13 +22,13 @@ $pinterest_url=$zendvn_sp_settings['pinterest_url'];
      <?php get_header();     ?>
      <div class="container margin-top-15">
          <div class="col-lg-9 no-padding">
-            <?php if(is_active_sidebar('slideshow-widget')):?>
-                <?php dynamic_sidebar('slideshow-widget')?>
+            <?php if(is_active_sidebar('left-content')):?>
+                <?php dynamic_sidebar('left-content')?>
             <?php endif; ?>   
          </div>
          <div class="col-lg-3 no-padding-right">
-            <?php if(is_active_sidebar('right-col-widget')):?>
-                <?php dynamic_sidebar('right-col-widget')?>
+            <?php if(is_active_sidebar('right-col')):?>
+                <?php dynamic_sidebar('right-col')?>
             <?php endif; ?>  
          </div>
      </div>

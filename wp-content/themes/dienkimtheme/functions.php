@@ -1,5 +1,6 @@
 <?php
 require_once get_template_directory() . '/inc/customizer.php';
+
 global $customizerGlobal;
 $customizerGlobal = new CustomizerControl();
 add_filter( 'nav_menu_link_attributes', 'wp_nav_menu_link', 10, 3 );
@@ -14,18 +15,9 @@ add_action('init', 'zendvn_theme_register_menus');
 function zendvn_theme_register_menus(){
 	register_nav_menus(
 		array(						
-			'main-menu' 			=> __('Main menu'),
-			'mobile-menu' 			=> __('Mobile menu'),
-			'dropdown-menu' 		=> __('Dropdownmenu'),
-			'rau-sach-menu' 		=> __('Rau sạch'),			
-			'support-menu' 			=> __('Hỗ trợ'),		
-			'direction-menu' 			=> __('Hướng dẫn'),		
-			'policy-menu' 			=> __('Chính sách'),		
-			'about-us-menu' 			=> __('Tại sao chọn chúng tôi'),		
-			'category-article-menu' => __('Danh mục bài viết'),	
-			'category-product-menu' => __('Danh mục sản phẩm'),			
-			'bottom-menu' => __('Bottom menu'),	
-			'top-menu' => __('Top menu'),			
+			'main-menu' 			=> __('MainMenu'),
+			'mobile-menu' 			=> __('MobileMenu'),		
+			'huong-dan' 			=> __('Hướng dẫn'),			
 		)
 	);
 }
@@ -41,21 +33,48 @@ add_action('widgets_init', 'zendvn_theme_widgets_init');
 function zendvn_theme_widgets_init(){	
 	$themeName="dienkimtheme";	
 	register_sidebar(array(
-		'name'          => __( 'SlideShow', $themeName ),
-		'id'            => 'slideshow-widget',		
+		'name'          => __( 'LeftContent', $themeName ),
+		'id'            => 'left-content',		
 		'class'         => '',
 		'before_widget' => '<div id="%1$s" class="%2$s">',
-		'before_title'  => '<h6>',
-		'after_title'   => '</h6>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
 		'after_widget'  => '</div>'				
 	));
 	register_sidebar(array(
 		'name'          => __( 'RightColWidget', $themeName ),
-		'id'            => 'right-col-widget',		
+		'id'            => 'right-col',		
 		'class'         => '',
 		'before_widget' => '<div id="%1$s" class="%2$s">',
-		'before_title'  => '<h6>',
-		'after_title'   => '</h6>',
+		'before_title'  => '<h3><div>',
+		'after_title'   => '</div></h3>',
+		'after_widget'  => '</div>'				
+	));
+	register_sidebar(array(
+		'name'          => __( 'GioiThieu', $themeName ),
+		'id'            => 'about',		
+		'class'         => '',
+		'before_widget' => '<div id="%1$s" class="%2$s">',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+		'after_widget'  => '</div>'				
+	));
+	register_sidebar(array(
+		'name'          => __( 'Thông tin liên hệ', $themeName ),
+		'id'            => 'thong-tin-lien-he',		
+		'class'         => '',
+		'before_widget' => '<div id="%1$s" class="%2$s">',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+		'after_widget'  => '</div>'				
+	));
+	register_sidebar(array(
+		'name'          => __( 'Fanpage', $themeName ),
+		'id'            => 'fanpage',		
+		'class'         => '',
+		'before_widget' => '<div id="%1$s" class="%2$s">',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
 		'after_widget'  => '</div>'				
 	));
 }
@@ -233,8 +252,270 @@ function loadSlideShow($attrs){
 		
 	}
 }
-add_shortcode('load_slideshow', 'loadSlideShow');
-
+add_shortcode('slideshow', 'loadSlideShow');
+function loadHomeProduct($attrs){
+	
+	ob_start();        	
+	extract(
+		shortcode_atts(
+			array(
+				'item' => '',	
+				'title'=>''		
+			), 
+			$attrs
+		)
+	);	
+	global $zController,$zendvn_sp_settings;
+	$vHtml=new HtmlControl();
+	$width=$zendvn_sp_settings["product_width"];    
+	$height=$zendvn_sp_settings["product_height"];      
+	$data=explode(',',$item);
+	if(count($data) > 0){
+		?>
+		<div class="home-product">
+			<h3><div><?php echo $title; ?></div></h3>
+			<div>
+				<?php 
+				$k=1;
+				foreach ($data as $key => $value) {
+					$args = array(  		
+						'p' => 	$value,			
+						'post_type' => 'zaproduct'
+					);			
+					$query = new WP_Query($args);				
+					if($query->have_posts()){		
+									
+						$post_count=$query->post_count;
+						while ($query->have_posts()) {
+							$query->the_post();		
+							$post_id=$query->post->ID;							
+							$permalink=get_the_permalink($post_id);
+							$title=get_the_title($post_id);
+							$excerpt=substr(get_the_excerpt( $post_id ), 0,200).'...';			
+							$featureImg=wp_get_attachment_url(get_post_thumbnail_id($post_id));
+		                    $featureImg=$vHtml->getFileName($featureImg);
+		                    $featureImg=$width.'x'.$height.'-'.$featureImg;                    
+		                    $featureImg=site_url( '/wp-content/uploads/'.$featureImg, null ) ; 
+							?>			
+							<div class="col-lg-3">
+								<div><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+								<div class="product-home-title"><center><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></center></div>
+							</div>
+							<?php
+												
+						}				
+						wp_reset_postdata();  
+					}	
+					if($k%4 ==0 || $k==count($data)){
+							echo '<div class="clr"></div>';
+						}
+						$k++;
+				}
+				?>
+			</div>
+		</div>
+		<?php		
+	}	
+}
+add_shortcode('home_product', 'loadHomeProduct');
+function loadTuVanNoiThat($attrs){
+	
+	ob_start();        	
+	extract(
+		shortcode_atts(
+			array(
+				'item' => '',	
+				'title'=>''		
+			), 
+			$attrs
+		)
+	);	
+	global $zController,$zendvn_sp_settings;
+	$vHtml=new HtmlControl();
+	$width=$zendvn_sp_settings["product_width"];    
+	$height=$zendvn_sp_settings["product_height"];      
+	$post_meta_key = "_zendvn_sp_post_";
+	$data=explode(',',$item);
+	if(count($data) > 0){
+		?>
+		<div class="home-product">
+			<h3><div><?php echo $title; ?></div></h3>
+			<div>
+				<?php 
+				$k=1;
+				foreach ($data as $key => $value) {
+					$args = array(  		
+						'p' => 	$value,			
+						'post_type' => 'post'
+					);			
+					$query = new WP_Query($args);				
+					if($query->have_posts()){		
+									
+						$post_count=$query->post_count;
+						while ($query->have_posts()) {
+							$query->the_post();		
+							$post_id=$query->post->ID;							
+							$permalink=get_the_permalink($post_id);
+							$title=get_the_title($post_id);
+							$excerpt=get_post_meta($post_id,$post_meta_key."intro",true);
+							$excerpt=substr($excerpt, 0,100).'...';			
+							$featureImg=wp_get_attachment_url(get_post_thumbnail_id($post_id));		    							                
+							?>			
+							<div class="col-lg-3">
+								<div><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+								<div class="product-home-title"><center><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></center></div>
+								<div class="article-home-excerpt margin-top-15"><?php echo $excerpt; ?></div>
+							</div>
+							<?php
+												
+						}				
+						wp_reset_postdata();  
+					}	
+					if($k%4 ==0 || $k==count($data)){
+							echo '<div class="clr"></div>';
+						}
+						$k++;
+				}
+				?>
+			</div>
+		</div>
+		<?php		
+	}	
+}
+add_shortcode('tu_van_noi_that', 'loadTuVanNoiThat');
+function loadBaiVietXemNhieu($attrs){
+	
+	ob_start();        	
+	extract(
+		shortcode_atts(
+			array(
+				'item' => '',	
+				'title'=>''		
+			), 
+			$attrs
+		)
+	);	
+	global $zController,$zendvn_sp_settings;
+	$vHtml=new HtmlControl();
+	$width=$zendvn_sp_settings["product_width"];    
+	$height=$zendvn_sp_settings["product_height"];      
+	$post_meta_key = "_zendvn_sp_post_";
+	$data=explode(',',$item);
+	if(count($data) > 0){
+		?>
+		<div class="home-product">
+			<h3><div><?php echo $title; ?></div></h3>
+			<div>
+				<?php 
+				$k=1;
+				foreach ($data as $key => $value) {
+					$args = array(  		
+						'p' => 	$value,			
+						'post_type' => 'post'
+					);			
+					$query = new WP_Query($args);				
+					if($query->have_posts()){		
+						$post_count=$query->post_count;
+						while ($query->have_posts()) {
+							$query->the_post();		
+							$post_id=$query->post->ID;							
+							$permalink=get_the_permalink($post_id);
+							$title=get_the_title($post_id);
+							$excerpt=get_post_meta($post_id,$post_meta_key."intro",true);
+							$excerpt=substr($excerpt, 0,100).'...';			
+							$featureImg=wp_get_attachment_url(get_post_thumbnail_id($post_id));		    							                
+							?>			
+							<div class="col-lg-6 no-padding">
+								<div class="col-lg-4"><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+								<div class="col-lg-8">
+									<div class="product-home-title">
+										<a href="<?php echo $permalink; ?>"><?php echo $title; ?></a>
+									</div>
+									<div class="bai-viet-xem-nhieu-excerpt margin-top-15"><?php echo $excerpt; ?></div>
+								</div>								
+							</div>
+							<?php
+												
+						}				
+						wp_reset_postdata();  
+					}	
+					if($k%2 ==0 || $k==count($data)){
+							echo '<div class="clr"></div>';
+						}
+						$k++;
+				}
+				?>
+			</div>
+		</div>
+		<?php		
+	}	
+}
+add_shortcode('bai_viet_xem_nhieu', 'loadBaiVietXemNhieu');
+function loadBaiVietMoiNhat($attrs){
+	
+	ob_start();        	
+	extract(
+		shortcode_atts(
+			array(
+				'item' => '',	
+				'title'=>''		
+			), 
+			$attrs
+		)
+	);	
+	global $zController,$zendvn_sp_settings;
+	$vHtml=new HtmlControl();
+	$width=$zendvn_sp_settings["product_width"];    
+	$height=$zendvn_sp_settings["product_height"];      
+	$post_meta_key = "_zendvn_sp_post_";
+	$data=explode(',',$item);
+	if(count($data) > 0){
+		?>
+		<div class="home-product">
+			<h3><div><?php echo $title; ?></div></h3>
+			<div>
+				<?php 
+				
+				foreach ($data as $key => $value) {
+					$args = array(  		
+						'p' => 	$value,			
+						'post_type' => 'post'
+					);			
+					$query = new WP_Query($args);				
+					if($query->have_posts()){		
+						$post_count=$query->post_count;
+						while ($query->have_posts()) {
+							$query->the_post();		
+							$post_id=$query->post->ID;							
+							$permalink=get_the_permalink($post_id);
+							$title=get_the_title($post_id);
+							$excerpt=get_post_meta($post_id,$post_meta_key."intro",true);
+							$excerpt=substr($excerpt, 0,100).'...';			
+							$featureImg=wp_get_attachment_url(get_post_thumbnail_id($post_id));		    							                
+							?>			
+							<div class="margin-top-15">
+								<div class="col-lg-4 no-padding"><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+								<div class="col-lg-8 no-padding-right">
+									<div class="product-home-title">
+										<a href="<?php echo $permalink; ?>"><?php echo $title; ?></a>
+									</div>
+									<div class="bai-viet-xem-nhieu-excerpt margin-top-15"><?php echo $excerpt; ?></div>
+								</div>		
+								<div class="clr"></div>						
+							</div>
+							<?php
+												
+						}				
+						wp_reset_postdata();  
+					}						
+				}
+				?>
+			</div>
+		</div>
+		<?php		
+	}	
+}
+add_shortcode('bai_viet_moi_nhat', 'loadBaiVietMoiNhat');
 
 
 

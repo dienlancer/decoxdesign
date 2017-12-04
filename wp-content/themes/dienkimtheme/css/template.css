@@ -483,6 +483,7 @@ div.customer-comment{
     border: 0;
     padding: 8px 10px;
 }
+
 .box-register-email button {
     position: absolute;
     background-color: #3ab54a;
@@ -506,8 +507,8 @@ div.mail-subscribe{
     font-size: 16px;
 }
 
-footer.footer{
-    background: #333;
+footer{
+    background:#e6e6e6;
 }
 h3.footer-title{
     text-transform: uppercase;
@@ -515,6 +516,32 @@ h3.footer-title{
     font-family: 'baomoi';
     color: #ffffff
 }
+div#text-10 > h3,div.container-huongdan > h3{
+        color: #00aeef;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+ul.huongdan > li > a{
+    color: #00aeef
+}
+ul.huongdan > li{
+    margin-left: 0
+}
+div.container-huongdan > div{
+    margin-top: 15px;
+}
+div.container-huongdan > div > ul{
+    list-style: none;
+}
+div#text-10 > div.textwidget,div#text-11 > div.textwidget{
+    text-align: justify;
+}
+
+div#text-11 > div.textwidget img{
+    width: 150px;
+}
+
 div.bottom-content{
     margin-top: 15px;
     text-align: justify;
@@ -576,7 +603,7 @@ h3.page-title{
 }
 div.textwidget{
     margin-top: 15px;
-    text-align: center;
+    
 }
 div#custom_html-3 > h3{
     display: none;
@@ -1163,6 +1190,48 @@ div.featured-instruction{
 div.interior-design{
     font-size: 16px;
 }
+div.home-product{
+    margin-top: 30px;
+}
+div.home-product > h3,
+div#media_image-3 > h3,
+div#text-9 > h3{    
+    border-bottom: 1px solid #333;
+    color: #333;
+    padding: 0;    
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+div.home-product > h3 > div,
+div#media_image-3 > h3 > div,
+div#text-9 > h3 > div{
+    display: inline-block;
+    border-bottom: 3px solid #414142;
+}
+div#text-10{
+    color:#333333
+}
+div#media_image-3{
+    margin-top: 30px;    
+}
+div#media_image-3 > h3{
+    padding-bottom: 5px
+}
+div.home-product > div:nth-child(2) > div.col-lg-3{
+    margin-top: 15px;
+}
+div.product-home-title a{
+        font-weight: bold;
+    font-size: 13px;
+}
+div.home-product > div > div.col-lg-6{
+    margin-top: 15px;
+}
+div.bai-viet-xem-nhieu-excerpt{
+    text-align: justify;
+}
+
 @media (max-width: 1199px){
     div.phone-number > div{
         display: none;
