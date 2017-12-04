@@ -63,19 +63,7 @@
                             $featureImg=$width.'x'.$height.'-'.$featureImg;                    
                             $featureImg=site_url( '/wp-content/uploads/'.$featureImg, null ) ; 
                             $price=get_post_meta( $post_id, $meta_key . 'price', true );
-                            $sale_price=get_post_meta( $post_id, $meta_key . 'sale_price', true );        
-                            $str_price='';
-                            $sale_price_des='';
-                            $regular_price='';
-                            if(!empty($price)){                     
-                                $sale_price_des=$vHtml->fnPrice($price);                                
-                            }
-                            if(!empty($sale_price)){                
-                                $regular_price ='<span class="price-regular">'.$vHtml->fnPrice($price).' đ</span>';                                     
-                                $sale_price_des=$vHtml->fnPrice($sale_price);                       
-                            }
-                            $sale_price_des='<span class="price-sale">'.$sale_price_des. ' đ'.'</span>' ;                   
-                            $str_price=$regular_price . '&nbsp;&nbsp;' . $sale_price_des ;
+                            $sale_price=get_post_meta( $post_id, $meta_key . 'sale_price', true );                                                                
                             ?>
                             <div class="col-lg-3">
                                 <div class="margin-top-15">

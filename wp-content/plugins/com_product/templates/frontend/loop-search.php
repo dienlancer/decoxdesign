@@ -70,41 +70,14 @@
                             $featureImg=site_url( '/wp-content/uploads/'.$featureImg, null ) ; 
                             $price=get_post_meta( $post_id, $meta_key . 'price', true );
                             $sale_price=get_post_meta( $post_id, $meta_key . 'sale_price', true );        
-                            $str_price='';
-                            $sale_price_des='';
-                            $regular_price='';
-                            if(!empty($price)){                     
-                                $sale_price_des=$vHtml->fnPrice($price);                                
-                            }
-                            if(!empty($sale_price)){                
-                                $regular_price ='<span class="price-regular">'.$vHtml->fnPrice($price).' đ</span>';                                     
-                                $sale_price_des=$vHtml->fnPrice($sale_price);                       
-                            }
-                            $sale_price_des='<span class="price-sale">'.$sale_price_des. ' đ'.'</span>' ;                   
-                            $str_price=$regular_price . '&nbsp;&nbsp;' . $sale_price_des ;
+                            
                             ?>
                             <div class="col-lg-3">
-                                <div class="box-product margin-top-15">
-                                    <div class="product-img"><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" alt="" /></a></figure></center>
-                                        <div class="box-product-add-to-cart">
-                                            <div class="them-vao-gio-hang">
-                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-alert-add-cart" onclick="addToCart(<?php echo $post_id; ?>);" ><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Thêm vào giỏ</a>                                    
-                                            </div>
-                                        </div>                              
-                                    </div>                              
-                                    <div class="box-product-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></div>
-                                    <div class="box-product-star">                              
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>                               
-                                    </div>
-                                    <div class="box-product-general-price margin-top-5">
-                                        <center><?php echo $str_price; ?></center>                                                  
-                                    </div>                                               
-                                </div>           
-                            </div>              
+                                <div class="margin-top-15">
+                                    <div><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+                                <div class="product-home-title"><center><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></center></div>
+                                </div>                                
+                            </div>         
                             <?php
                             if($k%4 ==0 || $k==$post_count){
                                 echo '<div class="clr"></div>';
