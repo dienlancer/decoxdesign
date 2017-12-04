@@ -297,7 +297,7 @@ function loadHomeProduct($attrs){
 		                    $featureImg=$width.'x'.$height.'-'.$featureImg;                    
 		                    $featureImg=site_url( '/wp-content/uploads/'.$featureImg, null ) ; 
 							?>			
-							<div class="col-lg-3">
+							<div class="col-sm-3">
 								<div><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
 								<div class="product-home-title"><center><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></center></div>
 							</div>
@@ -361,7 +361,7 @@ function loadTuVanNoiThat($attrs){
 							$excerpt=substr($excerpt, 0,100).'...';			
 							$featureImg=wp_get_attachment_url(get_post_thumbnail_id($post_id));		    							                
 							?>			
-							<div class="col-lg-3">
+							<div class="col-sm-3">
 								<div><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
 								<div class="product-home-title"><center><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></center></div>
 								<div class="article-home-excerpt margin-top-15"><?php echo $excerpt; ?></div>
@@ -425,9 +425,9 @@ function loadBaiVietXemNhieu($attrs){
 							$excerpt=substr($excerpt, 0,100).'...';			
 							$featureImg=wp_get_attachment_url(get_post_thumbnail_id($post_id));		    							                
 							?>			
-							<div class="col-lg-6 no-padding">
-								<div class="col-lg-4"><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
-								<div class="col-lg-8">
+							<div class="col-sm-6 no-padding">
+								<div class="col-sm-4"><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+								<div class="col-sm-8">
 									<div class="product-home-title">
 										<a href="<?php echo $permalink; ?>"><?php echo $title; ?></a>
 									</div>

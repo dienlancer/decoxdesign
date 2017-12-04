@@ -1218,14 +1218,14 @@ div#media_image-3{
 div#media_image-3 > h3{
     padding-bottom: 5px
 }
-div.home-product > div:nth-child(2) > div.col-lg-3{
+div.home-product > div:nth-child(2) > div{
     margin-top: 15px;
 }
 div.product-home-title a{
         font-weight: bold;
     font-size: 13px;
 }
-div.home-product > div > div.col-lg-6{
+div.home-product > div > div{
     margin-top: 15px;
 }
 div.bai-viet-xem-nhieu-excerpt{
