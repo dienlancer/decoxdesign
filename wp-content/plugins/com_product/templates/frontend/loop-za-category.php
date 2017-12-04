@@ -78,27 +78,11 @@
                             $str_price=$regular_price . '&nbsp;&nbsp;' . $sale_price_des ;
                             ?>
                             <div class="col-lg-3">
-                                <div class="box-product margin-top-15">
-                                    <div class="product-img"><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" alt="" /></a></figure></center>
-                                        <div class="box-product-add-to-cart">
-                                            <div class="them-vao-gio-hang">
-                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-alert-add-cart" onclick="addToCart(<?php echo $post_id; ?>);" ><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Thêm vào giỏ</a>                                    
-                                            </div>
-                                        </div>                              
-                                    </div>                              
-                                    <div class="box-product-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></div>
-                                    <div class="box-product-star">                              
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>                               
-                                    </div>
-                                    <div class="box-product-general-price margin-top-5">
-                                        <center><?php echo $str_price; ?></center>                                                  
-                                    </div>                                               
-                                </div>           
-                            </div>              
+                                <div class="margin-top-15">
+                                    <div><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featureImg; ?>" /></a></center></div>
+                                <div class="product-home-title"><center><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></center></div>
+                                </div>                                
+                            </div>  
                             <?php
                             if($k%4 ==0 || $k==$post_count){
                                 echo '<div class="clr"></div>';
@@ -111,6 +95,7 @@
         </div>
         <div class="clr"></div>
         <?php echo $pagination->showPagination();            ?>
+        <div class="clr"></div>
         <input type="hidden" name="filter_page" value="1" /> 
     </form>    
 </div>

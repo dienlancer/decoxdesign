@@ -47,14 +47,14 @@ $meta_key = "_zendvn_sp_post_";
                     $count  =   0;
                     $count  =   (int)$count_view_post;                
                     ?>
-                    <div class="col-md-4 box-article">
+                    <div class="col-md-3 box-article">
                                 <div class="box-article-img"><center><figure><a href="<?php echo $permalink; ?>"><img  src="<?php echo $featureImg; ?>"></a></figure></center></div>
                                 <div class="box-article-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></div>
                                 <div class="margin-top-5"><b>Lượt xem :</b> <?php echo $count; ?></div>
                                 <div class="box-article-intro"><?php echo $excerpt; ?></div>                        
                             </div>
                     <?php
-                    if($k%3 ==0 || $k==$post_count){
+                    if($k%4 ==0 || $k==$post_count){
                         echo '<div class="clr"></div>';
                     }
                     $k++;
