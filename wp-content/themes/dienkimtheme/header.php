@@ -73,11 +73,13 @@ if(count($arrCart) > 0){
     <div class="bg-header">
         <div class="container">        
             
-                <div class="col-lg-2 logo">                
+            <div class="col-lg-2 logo">       
+                <center>         
                     <a href="<?php echo home_url(); ?>">                
-                        <center><img src="<?php echo $customizerGlobal->general_section('site-logo');?>" /></center> 
+                        <img src="<?php echo $customizerGlobal->general_section('site-logo');?>" />
                     </a>
-                </div>                
+                </center> 
+            </div>                
                 <div class="col-lg-3">
                     <div>HOTLINE (HCM - HN) : <b><?php echo $telephone; ?></b></div>
                     <div><?php echo $contacted_phone; ?></div>
