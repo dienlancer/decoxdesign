@@ -12,156 +12,161 @@ $vHtml 				= new HtmlControl();
 
 $inputID 			= $option_name . '_product_number';
 $inputName 			= $option_name . '[product_number]';
-$inputValue 		= @$data['product_number'];	
+$inputValue 		= !empty(@$data['product_number']) ?  @$data['product_number'] : '';	
 $product_number		= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_article_number';
 $inputName 			= $option_name . '[article_number]';
-$inputValue 		= @$data['article_number'];	
+$inputValue 		= !empty(@$data['article_number']) ? @$data['article_number'] : '';	
 $article_number		= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_product_width';
 $inputName 			= $option_name . '[product_width]';
-$inputValue 		= @$data['product_width'];			
+$inputValue 		= !empty(@$data['product_width']) ? @$data['product_width'] : '';			
 $product_width		= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_product_height';
 $inputName 			= $option_name . '[product_height]';
-$inputValue 		= @$data['product_height'];			
+$inputValue 		= !empty(@$data['product_height']) ? @$data['product_height'] : '';			
 $product_height		= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);	
 
 $inputID 			= $option_name . '_currency_unit';
 $inputName 			= $option_name . '[currency_unit]';
-$inputValue 		= @$data['currency_unit'];			
+$inputValue 		= !empty(@$data['currency_unit']) ? @$data['currency_unit'] : '';			
 $currency_unit		= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);	
 
 $inputID 			= $option_name . '_smtp_host';
 $inputName 			= $option_name . '[smtp_host]';
-$inputValue 		= @$data['smtp_host'];			
+$inputValue 		= !empty(@$data['smtp_host']) ? @$data['smtp_host'] : '';			
 $smtp_host			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_smtp_port';
 $inputName 			= $option_name . '[smtp_port]';
-$inputValue 		= @$data['smtp_port'];			
+$inputValue 		= !empty(@$data['smtp_port']) ? @$data['smtp_port'] : '';			
 $smtp_port			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_encription';
 $inputName 			= $option_name . '[encription]';
-$inputValue 		= @$data['encription'];
+$inputValue 		= !empty(@$data['encription']) ? @$data['encription'] : '';
 $encription			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_smtp_auth';
 $inputName 			= $option_name . '[smtp_auth]';
-$inputValue 		= @$data['smtp_auth'];
+$inputValue 		= !empty(@$data['smtp_auth']) ? @$data['smtp_auth'] : '';
 $options			= array('data' => array(false=> 'No',true=>'Yes'),
 	'separator' => ' ');			
 $smtp_auth			= $vHtml->cmsRadio($inputName,"regular-text", $inputValue,$attr,$options);
 
 $inputID 			= $option_name . '_smtp_username';
 $inputName 			= $option_name . '[smtp_username]';
-$inputValue 		= @$data['smtp_username'];			
+$inputValue 		= !empty(@$data['smtp_username']) ? @$data['smtp_username'] : '';			
 $smtp_username		= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_smtp_password';
 $inputName 			= $option_name . '[smtp_password]';
-$inputValue 		= @$data['smtp_password'];			
+$inputValue 		= !empty(@$data['smtp_password']) ? @$data['smtp_password'] : '';			
 $smtp_password		= $vHtml->cmsPassword($inputID,$inputName,"regular-text", $inputValue);			
 
 $inputID 			= $option_name . '_email_from';
 $inputName 			= $option_name . '[email_from]';
-$inputValue 		= @$data['email_from'];			
+$inputValue 		= !empty(@$data['email_from']) ? @$data['email_from'] : '';			
 $arr 				= array('size' =>'25','id' => $inputID);
 $email_from			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);			
 
 $inputID 			= $option_name . '_email_to';
 $inputName 			= $option_name . '[email_to]';
-$inputValue 		= $data['email_to'];			
+$inputValue 		= !empty(@$data['email_to']) ? @$data['email_to'] : '';			
 $arr 				= array('size' =>'25','id' => $inputID);
 $email_to			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_from_name';
 $inputName 			= $option_name . '[from_name]';
-$inputValue 		= @$data['from_name'];			
+$inputValue 		= !empty(@$data['from_name']) ? @$data['from_name'] : '';			
 $from_name			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);			
 
 $inputID 			= $option_name . '_to_name';
 $inputName 			= $option_name . '[to_name]';
-$inputValue 		= @$data['to_name'];			
+$inputValue 		= !empty(@$data['to_name']) ? @$data['to_name'] : '';			
 $to_name			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_contacted_phone';
 $inputName 			= $option_name . '[contacted_phone]';
-$inputValue 		= @$data['contacted_phone'];			
+$inputValue 		= !empty(@$data['contacted_phone']) ? @$data['contacted_phone'] : '';			
 $contacted_phone			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_address';
 $inputName 			= $option_name . '[address]';
-$inputValue 		= @$data['address'];			
+$inputValue 		= !empty(@$data['address']) ?  @$data['address'] : '';			
 $address			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_website';
 $inputName 			= $option_name . '[website]';
-$inputValue 		= @$data['website'];			
+$inputValue 		= !empty(@$data['website']) ? @$data['website'] : '';			
 $website			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_telephone';
 $inputName 			= $option_name . '[telephone]';
-$inputValue 		= @$data['telephone'];			
+$inputValue 		= !empty(@$data['telephone']) ? @$data['telephone'] : '';			
 $telephone			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_opened_time';
 $inputName 			= $option_name . '[opened_time]';
-$inputValue 		= @$data['opened_time'];			
+$inputValue 		= !empty(@$data['opened_time']) ? @$data['opened_time'] : '';			
 $opened_time			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_opened_date';
 $inputName 			= $option_name . '[opened_date]';
-$inputValue 		= @$data['opened_date'];			
+$inputValue 		= !empty(@$data['opened_date']) ?  @$data['opened_date'] : '';			
 $opened_date			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_contacted_name';
 $inputName 			= $option_name . '[contacted_name]';
-$inputValue 		= @$data['contacted_name'];			
+$inputValue 		= !empty(@$data['contacted_name']) ? @$data['contacted_name'] : '';			
 $contacted_name			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_facebook_url';
 $inputName 			= $option_name . '[facebook_url]';
-$inputValue 		= @$data['facebook_url'];			
+$inputValue 		= !empty(@$data['facebook_url']) ? @$data['facebook_url'] : '';			
 $facebook_url			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_twitter_url';
 $inputName 			= $option_name . '[twitter_url]';
-$inputValue 		= @$data['twitter_url'];			
+$inputValue 		= !empty(@$data['twitter_url']) ? @$data['twitter_url'] : '';			
 $twitter_url			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_google_plus';
 $inputName 			= $option_name . '[google_plus]';
-$inputValue 		= @$data['google_plus'];			
+$inputValue 		= !empty(@$data['google_plus']) ? @$data['google_plus'] : '';			
 $google_plus			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_youtube_url';
 $inputName 			= $option_name . '[youtube_url]';
-$inputValue 		= @$data['youtube_url'];			
+$inputValue 		= !empty(@$data['youtube_url']) ? @$data['youtube_url'] : '';			
 $youtube_url			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_instagram_url';
 $inputName 			= $option_name . '[instagram_url]';
-$inputValue 		= @$data['instagram_url'];			
+$inputValue 		= !empty(@$data['instagram_url']) ? @$data['instagram_url'] : '';			
 $instagram_url			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_pinterest_url';
 $inputName 			= $option_name . '[pinterest_url]';
-$inputValue 		= @$data['pinterest_url'];			
+$inputValue 		= !empty(@$data['pinterest_url']) ? @$data['pinterest_url'] : '';			
 $pinterest_url			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
+
+$inputID 			= $option_name . '_linkedin_url';
+$inputName 			= $option_name . '[linkedin_url]';
+$inputValue 		= !empty(@$data['linkedin_url']) ? @$data['linkedin_url'] : '';			
+$linkedin_url			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_slogan_about';
 $inputName 			= $option_name . '[slogan_about]';
-$inputValue 		= @$data['slogan_about'];			
+$inputValue 		= !empty(@$data['slogan_about']) ? @$data['slogan_about'] : '';			
 $slogan_about			= $vHtml->cmsTextbox($inputID,$inputName,"regular-text", $inputValue);
 
 $inputID 			= $option_name . '_ban_do';
 $inputName 			= $option_name . '[ban_do]';
-$inputValue 		= @$data['ban_do'];			
+$inputValue 		= !empty(@$data['ban_do']) ? @$data['ban_do'] : '';			
 $ban_do			=$vHtml->cmsTextarea($inputID,$inputName,"widefat",$inputValue,8,120);
 
 ?>
@@ -368,6 +373,12 @@ $ban_do			=$vHtml->cmsTextarea($inputID,$inputName,"widefat",$inputValue,8,120);
 							<b><i><label >Pinterest</label></i></b>
 						</th>
 						<td><?php echo $pinterest_url;?></td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<b><i><label >Linked in</label></i></b>
+						</th>
+						<td><?php echo $linkedin_url;?></td>
 					</tr>
 					<tr>
 						<th scope="row">
