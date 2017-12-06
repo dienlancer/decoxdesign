@@ -88,7 +88,7 @@ if(count($arrCart) > 0){
                 <div class="col-lg-2">
                     <div class="desktop-box-search">                    
                         <div class="box-search">
-                            <form action="<?php echo $search_link; ?>" method="get">
+                            <form action="<?php echo $search_link; ?>" method="post">
                                 <input type="text" name="q" autocomplete="off" placeholder="Tìm kiếm sản phẩm" value="">
                                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
